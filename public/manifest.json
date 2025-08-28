@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Güvenli Parola Yöneticisi",
+  "version": "0.2.1",
+  "description": "Çok katmanlı güvenlik ile özgün şifre yönetim uygulaması.",
+  "icons": {
+    "48": "ontheflylogo.png"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "48": "ontheflylogo.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+  }
+}
