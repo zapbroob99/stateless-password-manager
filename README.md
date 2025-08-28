@@ -1,5 +1,6 @@
 
-![alt text](image.png)
+<img width="474" height="286" alt="image" src="https://github.com/user-attachments/assets/6976891d-589f-49f2-98d9-b4d395d06766" />
+
 
 
 ## Özellikler
@@ -65,6 +66,7 @@ Bu proje henüz resmi olarak yayınlanmadığı için geliştirme modunda kurulm
 
 4.  **Oturumu Kapatma:**
     *   Eklenti arayüzünün üst kısmındaki "Oturumu Kapat" butonuna tıklayarak mevcut Ana Parola oturumunu sonlandırabilirsiniz. Bu durumda, eklentiyi tekrar kullanmak için Ana Parolanızı yeniden girmeniz gerekecektir.
+
 
 
 
