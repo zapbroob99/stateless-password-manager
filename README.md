@@ -3,71 +3,77 @@
 
 
 
-## Özellikler
+## Features
 
-*   **On-the-Fly Parola Üretimi:** Parolalar asla saklanmaz, ihtiyaç anında üretilir.
-*   **Güçlü Kriptografi:** Anahtar türetme için Argon2d ve siteye özel anahtar üretimi için HMAC-SHA256 algoritmaları kullanılır.
-*   **Çeşitli Parola Şablonları:** Farklı güvenlik seviyeleri ve site gereksinimleri için ön tanımlı parola şablonları (Maksimum Güvenlik, Uzun, PIN vb.) sunar.
-*   **Dinamik Şablon Seçimi:** Üretilen siteye özel anahtara (siteKey) bağlı olarak, seçilen parola tipi içinden deterministik bir şekilde bir şablon seçilir.
-*   **Tarayıcı Eklentisi:** Google Chrome (ve diğer Chromium tabanlı tarayıcılar) için bir eklenti olarak çalışır.
-*   **Oturum Yönetimi:** Ana Parola, eklenti oturumu boyunca güvenli bir şekilde saklanır ve oturum kapatıldığında temizlenir.
-*   **Kayıtlı Siteler:** Sık kullanılan siteler ve bu siteler için tercih edilen parola tipleri eklenti içinde (tarayıcının yerel depolamasında) saklanabilir.
-*   **Otomatik URL Algılama:** Aktif sekmedeki URL'yi otomatik olarak algılayarak kullanıcıya kolaylık sağlar.
-*   **Kullanıcı Dostu Arayüz:** Sekmeli yapı ile yeni parola üretme ve kayıtlı sitelerden parola üretme işlemleri kolayca yapılabilir.
-*   **Parola Kopyalama:** Üretilen parolayı tek tıkla panoya kopyalama.
+* **On-the-Fly Password Generation:** Passwords are never stored — they are generated instantly when needed.  
+* **Strong Cryptography:** Uses **Argon2d** for key derivation and **HMAC-SHA256** for site-specific key generation.  
+* **Multiple Password Templates:** Provides predefined password templates (e.g., Maximum Security, Long, PIN) to meet different security and site requirements.  
+* **Dynamic Template Selection:** Deterministically selects a template from the chosen password type based on the generated site-specific key (`siteKey`).  
+* **Browser Extension:** Works as an extension for Google Chrome (and other Chromium-based browsers).  
+* **Session Management:** The master password is securely stored during the extension session and cleared once the session ends.  
+* **Saved Sites:** Frequently used sites and their preferred password types can be saved within the extension (using the browser’s local storage).  
+* **Automatic URL Detection:** Automatically detects the active tab’s URL for convenience.  
+* **User-Friendly Interface:** Tab-based structure allows easy password generation and retrieval from saved sites.  
+* **Password Copying:** Copy the generated password to your clipboard with a single click.  
 
-## Kullanım
+---
 
-### 1. Eklentinin Kurulumu (Geliştirme Modunda)
+## Usage
 
-Bu proje henüz resmi olarak yayınlanmadığı için geliştirme modunda kurulması gerekmektedir:
+### 1. Installing the Extension (Development Mode)
 
-1.  Bu GitHub reposunu klonlayın veya ZIP olarak indirin.
-2.  Proje dizininde terminali açın ve bağımlılıkları yükleyin:
+This project is not officially published yet, so it needs to be installed in **developer mode**:
+
+1. Clone this GitHub repository or download it as a ZIP file.  
+2. Open the terminal in the project directory and install dependencies:  
     ```bash
     npm install
-    # veya
+    # or
     yarn install
     ```
-3.  Projeyi build edin:
+3. Build the project:  
     ```bash
     npm run build
-    # veya
+    # or
     yarn build
     ```
-    Bu komut, eklenti dosyalarını içeren bir `dist` klasörü oluşturacaktır.
-4.  Tarayıcınızı açın (örn: Google Chrome):
-    *   Adres çubuğuna `chrome://extensions` yazın.
-    *   Sağ üst köşedeki "Geliştirici modu" (Developer mode) seçeneğini aktif hale getirin.
-    *   "Paketlenmemiş öğe yükle" (Load unpacked) butonuna tıklayın.
-    *   Açılan dosya seçici penceresinde, projenizin içindeki `dist` klasörünü seçin.
-5.  Eklenti yüklenecek ve tarayıcınızın eklentiler çubuğunda ikonu görünecektir.
+    This will generate a `dist` folder containing the extension files.  
+4. Open your browser (e.g., Google Chrome):  
+    * Type `chrome://extensions` in the address bar.  
+    * Enable **Developer mode** from the top-right corner.  
+    * Click **Load unpacked**.  
+    * Select the `dist` folder inside your project directory.  
+5. The extension will be loaded, and its icon will appear in your browser’s extensions bar.  
 
-### 2. Eklentiyi Kullanma
+---
 
-1.  **Ana Parolayı Ayarlama (Oturum Başlatma):**
-    *   Eklenti ikonuna tıkladığınızda, ilk olarak Ana Parolanızı girmeniz istenecektir. Bu parola, tüm site parolalarınızın üretilmesi için temel oluşturur. **Bu parolayı çok güçlü seçin ve asla unutmayın!**
-    *   Ana Parolanızı girip "Ana Parolayı Ayarla" butonuna tıklayın. Başarılı olursa oturumunuz aktif hale gelir.
+### 2. Using the Extension
 
-2.  **Yeni Bir Site İçin Parola Üretme:**
-    *   "Yeni Parola Üret" sekmesinde olduğunuzdan emin olun.
-    *   "URL / Site Adı" alanına parola üretmek istediğiniz web sitesinin adresini (örn: `example.com`) girin. Eklenti, aktif sekmedeki URL'yi otomatik olarak buraya getirmeye çalışacaktır.
-    *   "Parola Tipi" dropdown menüsünden istediğiniz parola karmaşıklığını seçin (örn: Maksimum Güvenlik, Uzun, PIN).
-    *   "Üret ve Kaydet" butonuna tıklayın.
-    *   Üretilen parola aşağıda gösterilecektir. "Kopyala" butonu ile panoya alabilirsiniz.
-    *   Bu site ve seçtiğiniz parola tipi, eklentinin "Kayıtlı Siteler" listesine eklenecektir.
+#### **Set Master Password (Start Session)**
+* Click the extension icon — you’ll be asked to enter your **Master Password**.  
+* This password serves as the foundation for generating all site passwords.  
+* Choose a **very strong** master password and **never forget it!**  
+* Click **Set Master Password** to start your session.  
 
-3.  **Kayıtlı Bir Siteden Parola Üretme:**
-    *   "Kayıtlı Siteler" sekmesine geçin.
-    *   Daha önce parola ürettiğiniz sitelerin bir listesini göreceksiniz.
-    *   Parola üretmek istediğiniz sitenin üzerine tıklayın veya yanındaki "Üret" butonuna tıklayın.
-    *   (Eğer oturumunuz kapanmışsa veya ilk kez bu oturumda bir işlem yapıyorsanız Ana Parolanız tekrar istenebilir.)
-    *   Site için daha önce kaydedilmiş parola tipi kullanılarak (veya o an seçili genel parola tipiyle) parola üretilecek ve gösterilecektir.
+#### **Generate a Password for a New Site**
+1. Ensure you’re in the **“Generate New Password”** tab.  
+2. Enter the site’s URL or name (e.g., `example.com`). The extension will try to auto-detect it from the active tab.  
+3. Select your preferred password type (e.g., Maximum Security, Long, PIN).  
+4. Click **Generate & Save**.  
+5. The generated password will appear below — click **Copy** to copy it to your clipboard.  
+6. The site and its selected password type will be saved to the **Saved Sites** list.  
 
-4.  **Oturumu Kapatma:**
-    *   Eklenti arayüzünün üst kısmındaki "Oturumu Kapat" butonuna tıklayarak mevcut Ana Parola oturumunu sonlandırabilirsiniz. Bu durumda, eklentiyi tekrar kullanmak için Ana Parolanızı yeniden girmeniz gerekecektir.
+#### **Generate Password from Saved Sites**
+1. Switch to the **“Saved Sites”** tab.  
+2. You’ll see a list of previously used sites.  
+3. Click on a site or the **Generate** button next to it.  
+4. (If your session has expired, the extension will ask for your Master Password again.)  
+5. The password will be generated using the stored password type for that site.  
 
-
+#### **End Session**
+* Click the **Logout** button at the top of the extension interface.  
+* This clears the Master Password from memory.  
+* To use the extension again, you’ll need to re-enter your Master Password.  
 
 
 
