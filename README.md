@@ -1,8 +1,4 @@
 
-<img width="474" height="286" alt="image" src="https://github.com/user-attachments/assets/6976891d-589f-49f2-98d9-b4d395d06766" />
-
-
-
 ## Features
 
 * **On-the-Fly Password Generation:** Passwords are never stored — they are generated instantly when needed.  
